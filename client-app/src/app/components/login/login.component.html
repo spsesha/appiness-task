@@ -1,0 +1,13 @@
+<div class="ui form">
+  <div class="field">
+    <label>Email</label>
+    <input type="email" name="email" id="email" [(ngModel)]="cred.email">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" name="password" id="password" [(ngModel)]="cred.password">
+  </div>
+  <button class="ui primary button" (click)="login()">Sign in</button>
+</div>
+<br>
+<a routerLink="/account/signup">Don't have an account? Sign up</a>

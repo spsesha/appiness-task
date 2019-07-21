@@ -1,0 +1,47 @@
+<div class="content">
+  <div class="ui three column grid">
+    <div class="row">
+      <label for="" class="column">Total budget: </label>
+      <div class="ui input column">
+          <input type="number" min="0" name="budget" id="budget" [(ngModel)]="newBudget">
+      </div>
+      <div class="column">
+        <button class="ui primary button" (click)="updateBudget()" [disabled]="budget === newBudget">Update</button>
+      </div>
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+      <label for="" class="column">Category: </label>
+      <div class="ui input column">
+          <input type="text" name="category" id="category" [(ngModel)]="newCat" placeholder="Category">
+      </div>
+      <div class="column">
+        <button class="ui secondary button" (click)="addCategory()" [disabled]="!newCat">Add</button>
+      </div>
+    </div>
+  </div><br><br>
+  <div *ngIf="categoryList.size == 0; else list">
+    No categories added
+  </div>
+  <ng-template #list>
+    <div class="ui middle aligned divided list">
+      <div class="item" *ngFor="let item of categoryList">
+        <div class="right floated content">
+          <button class="ui circular red icon button" (click)="deleteCategory(item)">
+            <i class="icon trash"></i>
+          </button>
+        </div>
+        <div class="content">
+          {{item}}
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div class="alertMessage" *ngIf="alertMessage">
+  <div class="ui floating message" [ngClass]="alertMessage.class">
+    {{alertMessage.message}}
+  </div>
+</div>

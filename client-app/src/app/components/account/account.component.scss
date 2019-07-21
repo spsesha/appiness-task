@@ -1,0 +1,14 @@
+:host {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+}
+
+.mainContainer {
+    margin: auto;
+    min-width: 400px;
+
+    h2 {
+        text-align: center;
+    }
+}

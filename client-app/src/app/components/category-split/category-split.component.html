@@ -1,0 +1,25 @@
+<div *ngIf="category.length > 5">
+  <h3>Category wise split</h3>
+  <table class="ui fixed celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount spent</th>
+      </tr>
+    </thead>
+  </table>
+  <div class="container">
+    <table class="ui fixed celled table">
+      <tbody>
+        <tr *ngFor="let cat of category">
+          <td>{{cat._id}}</td>
+          <td>{{cat.amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  <canvas #catCanvas width="608" height="224" *ngIf="category.length <= 5">{{canvasChart}}</canvas>
+</div>

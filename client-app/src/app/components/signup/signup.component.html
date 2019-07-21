@@ -1,0 +1,21 @@
+<div class="ui form">
+    <div class="field">
+        <label>Name</label>
+        <input type="text" name="name" id="name" [(ngModel)]="details.name">
+    </div>
+    <div class="field">
+        <label>Email</label>
+        <input type="text" name="email" id="email" [(ngModel)]="details.email">
+    </div>
+    <div class="field">
+        <label>Password</label>
+        <input type="password" name="password" id="password" [(ngModel)]="details.password">
+    </div>
+    <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" name="confirm" id="confirm" [(ngModel)]="details.confirm">
+    </div>
+    <button class="ui primary button" (click)="signup()">Sign Up</button>
+</div>
+<br>
+<a routerLink="/account/login">Alerady signed up? Login here</a>

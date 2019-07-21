@@ -1,0 +1,10 @@
+<div class="mainMenu">
+  <div class="ui vertical text menu">
+    <a class="item" routerLink='/home' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a class="item" routerLink='/home/settings' routerLinkActive="active">Settings</a>
+    <a class="item" (click)="logout()">Signout</a>
+  </div>
+</div>
+<div class="mainContent">
+  <router-outlet></router-outlet>
+</div>

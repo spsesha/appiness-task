@@ -1,0 +1,25 @@
+:host {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.content {
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+.alertMessage {
+    grid-row: 3/4;
+    grid-column: 2/3;
+}
+
+.list {
+    width: 400px;
+    height: 220px;
+    overflow-y: auto;
+    border: 1px rgba(0,0,0,0.1) solid;
+    padding: 10px;
+}

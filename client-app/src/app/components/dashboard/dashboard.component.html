@@ -1,0 +1,67 @@
+<app-budget-overview [budget]="budget"></app-budget-overview>
+<app-category-split [category]="category"></app-category-split>
+<div class="mainContent">
+  <button class="ui primary button" (click)="openModal()">Add expense</button> <br><br>
+  <table class="ui padded celled table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Category</th>
+        <th>Item name</th>
+        <th>Amount</th>
+        <th>Expense Date</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exp of expenses">
+        <td>
+          <button class="ui icon button" (click)="openModal(exp, true)">
+            <i class="edit icon"></i>
+          </button>
+        </td>
+        <td>{{exp.category}}</td>
+        <td>{{exp.name}}</td>
+        <td>{{exp.amount}}</td>
+        <td>{{exp.createdAt | date}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <sui-pagination
+    [collectionSize]="totalExpenses"
+    [pageSize]="10"
+    [maxSize]="5"
+    [hasEllipses]="true"
+    (pageChange)="pageChanged($event)"
+    ></sui-pagination>
+</div>
+
+<ng-template let-context let-modal="modal" #modalTemplate>
+  <div class="header">{{isEdit ? 'Edit': 'Add'}} Expense</div>
+  <div class="content">
+    <div class="ui grid">
+      <div class="ui fluid input row">
+        <input type="text" [(ngModel)]="modalData.name" placeholder="Name">
+      </div>
+      <div class="ui fluid input row">
+        <input type="number" [(ngModel)]="modalData.amount" min="0" placeholder="Amount">
+      </div>
+      <div class="ui fluid input row">
+        <input type="date" [(ngModel)]="modalData.createdAt" placeholder="Name">
+      </div>
+      <sui-select
+        class="selection row"
+        [(ngModel)]="modalData.category"
+        [options]="categoryList"
+        
+        #select>
+        <sui-select-option *ngFor="let option of select.filteredOptions" [value]="option"></sui-select-option>
+      </sui-select>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Save</button>
+  </div>
+</ng-template>
